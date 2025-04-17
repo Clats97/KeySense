@@ -8,13 +8,13 @@ KeySense Cipher is a text substitution cipher combining modern key‑derivation 
 
 | Layer | Contribution to Security | Rationale |
 |-------|-------------------------|-----------|
-| **PBKDF2‑HMAC‑SHA‑256** (100 k iterations, 8 B salt) | **Key stretching** & rainbow‑table resistance | PBKDF2 is NIST‑recommended for deriving keys from low‑entropy passphrases. 100 000 iterations increases the cost of brute‑force by ~10⁵. citeturn0search0turn0search3 |
+| **PBKDF2‑HMAC‑SHA‑256** (100 k iterations, 8 B salt) | **Key stretching** & rainbow‑table resistance | PBKDF2 is NIST‑recommended for deriving keys from low‑entropy passphrases. 100 000 iterations increases the cost of brute‑force by ~10⁵ |
 | **Random IV (64 bit)** | **Semantic security** | Same keyword encrypting identical plaintexts yields different ciphertexts. |
 | **Pre‑compression (DEFLATE/zlib)** | **Redundancy reduction** | Weakens frequency analysis by flattening symbol distribution. citeturn0search1 |
 | **Random header + padding** | **Chosen‑plaintext hardening** | Masks message boundaries & prevents length leakage in short messages. |
 | **Enhanced Autokey Cipher** | **Confusion** | Key stream derives from both random subkey and evolving plaintext, thwarting standard Kasiski/IC attacks that break fixed‑key polyalphabetics. |
 | **Keyed Transposition** | **Diffusion** | Re‑orders symbols block‑wise using a permutation derived from the same 256‑bit subkey, coupling every eight‑character block. |
-| **Kerckhoffs compliance** | **Openness ≠ weakness** | All algorithms are public; only the keyword must remain secret. citeturn0search2 |
+| **Kerckhoffs compliance** | **Openness ≠ weakness** | All algorithms are public; only the keyword must remain secret.|
 
 ### Why multiple layers?
 If one classical primitive failed under cryptanalysis, the remaining layers (plus modern KDF and IV randomization) still provide a security margin. The design therefore follows *defence‑in‑depth* and blends modern best‑practice with historically instructive ciphers.
@@ -49,4 +49,4 @@ If one classical primitive failed under cryptanalysis, the remaining layers (plu
 
 ---
 
-This project is released under the Apache 2.0 License and was made by Joshua M Clatney
+Joshua M Clatney made this project under the Apache 2.0 License.
