@@ -34,11 +34,11 @@ If one classical primitive failed under cryptanalysis, the remaining layers (plu
 
 ## Quick Start
 
-# 1. Clone or Dowwnload
+1. Clone or Download
  
-# 2. Install Python
+2. Install Python
 
-# 3. Run the script
+3. Run the script
 
 ## Limitations & Caveats
 * No formal security proof.  
