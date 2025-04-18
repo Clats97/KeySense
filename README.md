@@ -183,7 +183,7 @@ With those caveats addressed—chiefly by adding AEAD and a memory‑hard KDF—
 
 ---
 
-## 11 Bibliography
+## 11. Bibliography
 1. NIST, “Revision of SP 800‑132: Recommendation for Password‑Based Key Derivation,” 2023  
 2. StackOverflow thread on PBKDF2 brute‑force performance, 2012 (empirical GPU figures)  
 3. Hashcat WPA PBKDF2 benchmark (2024 fork, GitHub gist)  
