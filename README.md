@@ -52,13 +52,13 @@ If one classical primitive failed under cryptanalysis, the remaining layers (plu
 ---
 # Detailed Cryptanalysis of the **KeySense** Cipher
 
-## 1 Executive Summary
+## 1. Executive Summary
 KeySense is a hybrid “classical plus” stream cipher that wraps modern primitives (PBKDF2‑HMAC‑SHA‑256, HMAC‑SHA‑256 keystream generation, Base‑64 transport) around a 26‑symbol additive stream cipher and an 8‑byte fixed‑width block transposition. The design eliminates many weaknesses of historical poly‑alphabetic ciphers, but inherits new ones from its restricted alphabet, user‑chosen keywords, and the absence of an integrity check. In an adversarial model where the attacker can capture ciphertexts and knows the IV and salt (both are transmitted in the clear), security relies almost entirely on the entropy of the user keyword and on PBKDF2’s cost parameter. With a high‑entropy pass‑phrase (≥ 96 bits) KeySense is much stronger than every traditional textbook cipher. With a typical human keyword (20 – 40 bits), it is susceptible to large‑scale GPU dictionary attacks that complete in days.  
 We rate its confidentiality **8.2 / 10** compared with classical systems, but only **5 / 10** against modern best practice because it lacks authenticated encryption and a memory‑hard KDF. Detailed reasoning follows.
 
 ---
 
-## 2 Algorithm Overview (Encrypt Pipeline)
+## 2. Algorithm Overview (Encrypt Pipeline)
 
 | Stage | Description | Purpose |
 |-------|-------------|---------|
@@ -74,7 +74,7 @@ Decryption reverses steps 6 → 0; note: **no message authentication** is per
 
 ---
 
-## 3 Primitives and Their Security
+## 3. Primitives and Their Security
 
 | Primitive | Strengths | Caveats |
 |-----------|-----------|---------|
@@ -86,7 +86,7 @@ Decryption reverses steps 6 → 0; note: **no message authentication** is per
 
 ---
 
-## 4 Key Space and Entropy Analysis
+## 4. Key Space and Entropy Analysis
 
 ### 4.1 User Keyword
 
@@ -107,7 +107,7 @@ Each symbol comes from a 32‑byte HMAC output ⇒ 256‑bit internal state per 
 
 ---
 
-## 5 Strengths
+## 5. Strengths
 
 1. **Modern Cryptographic Building Blocks** – Using HMAC‑SHA‑256 and PBKDF2 aligns with well‑vetted primitives. Provided the keyword has ≥ 80 bits entropy, brute‑force attacks are economically unrealistic for decades.  
 2. **Collision‑Free Keystream** – HMAC(counter) with unique IV eliminates keystream reuse across messages—an advantage over classical Vigenère/Autokey, which repeats the key every |keyword| letters.  
@@ -117,7 +117,7 @@ Each symbol comes from a 32‑byte HMAC output ⇒ 256‑bit internal state per 
 
 ---
 
-## 6 Weaknesses & Practical Attack Vectors
+## 6. Weaknesses & Practical Attack Vectors
 
 | # | Weakness | Practical Attack |
 |---|----------|-----------------|
@@ -130,7 +130,7 @@ Each symbol comes from a 32‑byte HMAC output ⇒ 256‑bit internal state per 
 
 ---
 
-## 7  Detailed Cryptanalytic Evaluation
+## 7. Detailed Cryptanalytic Evaluation
 
 *Selected highlights (see full text for in‑depth discussion):*
 
@@ -140,7 +140,7 @@ Each symbol comes from a 32‑byte HMAC output ⇒ 256‑bit internal state per 
 * **Permutation Recovery** – Once an adversary finds the first 8 sub‑key bytes, the 8! (40 320) block permutation is trivial to invert.  
 * **Compression Oracle** – Divergent error messages leak bits unless sanitised.
 
-### Comparison with Classical Ciphers
+### 8. Comparison with Classical Ciphers
 
 | Cipher | Key Size | Keystream Repeat | Complexity of Cryptanalysis | Relative Rating \* |
 |--------|---------|------------------|-----------------------------|--------------------|
@@ -157,7 +157,7 @@ KeySense clearly surpasses every pure classical cipher, largely because it borro
 
 ---
 
-## 9 Quantitative Security Rating
+## 9. Quantitative Security Rating
 
 | Dimension | Score (0–10) | Rationale |
 |-----------|-------------|-----------|
@@ -171,7 +171,7 @@ KeySense clearly surpasses every pure classical cipher, largely because it borro
 
 ---
 
-## 10 Conclusion
+## 10. Conclusion
 KeySense v1.10 cleverly blends classical ideas with modern cryptographic primitives. Its stream component is sound *if* the keyword has high entropy, and PBKDF2 cost remains high, but practical deployments must compensate for:
 
 * Lack of integrity protection,  
