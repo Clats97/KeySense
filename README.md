@@ -3,6 +3,8 @@ Very strong **hybrid authenticated cipher** that preprocesses text with random p
 
 **IN-DEPTH CRYPTANALYSIS BELOW**
 
+![KeySenseInfo](https://github.com/user-attachments/assets/2ec3bea0-f789-4017-8138-1fd7f6d911e6)
+
 ---
 
 ## Purpose  
