@@ -1,7 +1,7 @@
 # KeySense Cipher v1.01  
-Very strong **hybrid authenticated cascade encryption cipher** that preprocesses text with random padding, *Argon2id*-stretches a password + 96-bit nonce, derives two sub-keys with **HKDF-SHA-256**, block-wise keyed-transposes the data, encrypts *and authenticates* it with **ChaCha20-Poly1305**, compresses the result, prepends a 32-bit message counter, and finally outputs Base64.
+Very strong **hybrid authenticated cascade encryption cipher** that preprocesses text with random padding, *Argon2id*-stretches a password + 96-bit nonce, derives two sub-keys with **HKDF-SHA-256**, block-wise keyed-transposes the data, encrypts *and authenticates* it with **ChaCha20-Poly1305**, compresses the result, prepends a 32-bit message counter, and finally
 
-**IN-DEPTH CRYPTANALYSIS BELOW**
+**IN-DEPTH CRYPTANALYSIS BELOW. DOWNLOAD THE PDF ANALYSIS FOR A HIGH LEVELCRYPTOGRAPHIC REPORT**
 
 ![KeySenseInfo](https://github.com/user-attachments/assets/2ec3bea0-f789-4017-8138-1fd7f6d911e6)
 
