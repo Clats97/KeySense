@@ -1,4 +1,4 @@
-# KeySense Cipher v1.02  
+# KeySense Cipher v1.01  
 Very strong **hybrid authenticated cascade encryption cipher** that preprocesses text with random padding, *Argon2id*-stretches a password + 96-bit nonce, derives two sub-keys with **HKDF-SHA-256**, block-wise keyed-transposes the data, encrypts *and authenticates* it with **ChaCha20-Poly1305**, compresses the result, prepends a 32-bit message counter, and finally outputs as Base64.
 
 **IN-DEPTH CRYPTANALYSIS BELOW. SCROLL ALL THE WAY TO THE BOTTOM**
@@ -9,7 +9,7 @@ Very strong **hybrid authenticated cascade encryption cipher** that preprocesses
 
 ## **Purpose**
 
-**KeySense v1.02** remains a *didactic defence-in-depth cipher* for short consumer text messages, but it now demonstrates a **higher-cost password hash (Argon2id, 384 MiB, t = 8, p = 4)**, a **standard ChaCha20-Poly1305 AEAD** (96-bit nonce), and a **512-byte keyed block transposition** to showcase how modern and historical primitives can be layered without sacrificing security.  
+**KeySense v1.01** remains a *didactic defence-in-depth cipher* for short consumer text messages, but it now demonstrates a **higher-cost password hash (Argon2id, 384 MiB, t = 8, p = 4)**, a **standard ChaCha20-Poly1305 AEAD** (96-bit nonce), and a **512-byte keyed block transposition** to showcase how modern and historical primitives can be layered without sacrificing security.  
 
 ---
 
